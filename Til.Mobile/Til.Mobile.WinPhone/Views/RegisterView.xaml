@@ -1,0 +1,77 @@
+﻿<views:MvxPhonePage
+    x:Class="Til.Mobile.WinPhone.Views.RegisterView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Views;assembly=Cirrious.MvvmCross.WindowsPhone"
+    xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+  
+    xmlns:controls1="clr-namespace:Til.Mobile.WinPhone.Controls"
+    xmlns:helpers1="clr-namespace:Til.Mobile.WinPhone.Helpers"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+    
+    <shell:SystemTray.ProgressIndicator>
+        <shell:ProgressIndicator Text="{Binding LoadingText,Mode=TwoWay}"  IsIndeterminate="{Binding IsLoading,Mode=TwoWay}" IsVisible="True" />
+    </shell:SystemTray.ProgressIndicator>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid Background="GhostWhite">
+        <Grid>
+            <Grid.Background>
+                <ImageBrush Opacity="0.93" Stretch="UniformToFill"  ImageSource="/Assets/Images/header-bg.jpg" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+          
+            <TextBlock Grid.Row="0" Margin="20" Style="{StaticResource LogoTextBlockStyle}"/>
+            
+            <StackPanel x:Name="RegisterPanel"  VerticalAlignment="Center" Grid.Row="1">
+                <telerikPrimitives:RadTransitionControl Opacity="1" Padding="0" Content="{Binding CurrentStep,Mode=TwoWay}" x:Name="TransitionControl">
+                    <telerikPrimitives:RadTransitionControl.ContentTemplate>
+                        <DataTemplate>
+                            <controls1:TransitionControlTemplateSelector Margin="0" Padding="0" Content="{Binding}">
+                                <controls1:TransitionControlTemplateSelector.Page1>
+                                    <DataTemplate>
+                                        <StackPanel Margin="0" DataContext="{Binding ElementName=RegisterPanel,Path=DataContext}" >
+                                            <TextBlock Text="Номер телефона" Margin="12,0,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                            <TextBox  Template="{StaticResource PhoneTextBoxTemplate}" Text="{Binding Phone,Mode=TwoWay}" helpers1:BindingUtility.UpdateSourceOnChange="True"   MaxLength="11" InputScope="Number" />
+                                            <Button IsEnabled="{Binding CanRegister,Mode=TwoWay}" Command="{Binding RegisterUserAndWaitSmsCommand}"  Grid.Row="3" Width="400" Height="80" Style="{StaticResource ButtonStyle}" Opacity="1" >
+                                                <TextBlock FontSize="20"  FontFamily="Segoe UI" FontWeight="Medium" Foreground="{StaticResource ForegroundOnAccent}" Text="Зарегистрироваться"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </controls1:TransitionControlTemplateSelector.Page1>
+                                <controls1:TransitionControlTemplateSelector.Page2>
+                                    <DataTemplate>
+                                        <StackPanel  Margin="0" VerticalAlignment="Center" DataContext="{Binding ElementName=RegisterPanel,Path=DataContext}">
+                                            <telerikPrimitives:RadTextBox helpers1:BindingUtility.UpdateSourceOnChange="True"  Header="Код" Watermark="Введите код" MaxLength="10" InputScope="Number" Text="{Binding Code,Mode=TwoWay}"/>
+                                            <Button IsEnabled="{Binding CanAuth,Mode=TwoWay}" Command="{Binding AuthCommand}"   Grid.Row="3" Width="400" Height="80" Style="{StaticResource ButtonStyle}" Opacity="1" >
+                                                <TextBlock FontSize="20"  FontFamily="Segoe UI" FontWeight="Medium" Foreground="{StaticResource ForegroundOnAccent}" Text="Войти"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </controls1:TransitionControlTemplateSelector.Page2>
+                            </controls1:TransitionControlTemplateSelector>
+                        </DataTemplate>
+                    </telerikPrimitives:RadTransitionControl.ContentTemplate>
+                   
+                    </telerikPrimitives:RadTransitionControl>
+            </StackPanel>
+    
+            <TextBlock Margin="20" Style="{StaticResource PhoneTextSubtleStyle}" FontStyle="Italic" TextWrapping="Wrap" Grid.Row="2"  Text="Текст объясняющий что придёт смс. Что смс это пароль.Что когда придёт смс, нужно ввести его в поле пароль ну и тому подобное.. много текста целая стена.. тест тест тест" />
+
+        </Grid>
+      
+       
+    </Grid>
+</views:MvxPhonePage>
