@@ -15,8 +15,21 @@ namespace Til.Mobile.ViewModels
         private readonly IApiFacade _apiFacade;
         private ObservableCollection<Post> _posts;
         private MvxCommand _requestDataCommand;
+        private MvxCommand _refreshCommand;
         private int _count = 20;
         private int _offset = 0;
+
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                _refreshCommand = _refreshCommand ?? new MvxCommand(RefreshData);
+                return _refreshCommand;
+            }
+        }
+
+       
 
         public ICommand RequestDataCommand
         {
@@ -35,6 +48,12 @@ namespace Til.Mobile.ViewModels
                 Posts.Add(post);
             }
             _offset += _count;
+        }
+
+        private void RefreshData()
+        {
+            _offset = 0;
+            Posts=new ObservableCollection<Post>();
         }
 
         public PostListViewModel(IApiFacade apiFacade)

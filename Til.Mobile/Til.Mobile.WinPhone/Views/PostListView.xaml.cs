@@ -23,5 +23,10 @@ namespace Til.Mobile.WinPhone.Views
         {
             (this.DataContext as PostListViewModel).RequestDataCommand.Execute(e);
         }
+
+        private void RadDataBoundListBox_OnRefreshRequested(object sender, EventArgs e)
+        {
+            (this.DataContext as PostListViewModel).RefreshCommand.Execute(e);
+        }
     }
 }

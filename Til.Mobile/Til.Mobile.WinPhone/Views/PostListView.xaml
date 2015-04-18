@@ -11,6 +11,7 @@
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:commands="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Commands;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
+    xmlns:common="clr-namespace:SocialMediaDashboard.W8.Common"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -49,40 +50,49 @@
                 </Border>
 
                 <StackPanel Grid.Row="1">
-                    <TextBlock Text="Меню 1" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
-                    <TextBlock Text="Меню 2" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
+                    <StackPanel Margin="20,10,0,0" Orientation="Horizontal">
+                        <Image Height="64" Width="64"  Source="https://pp.vk.me/c620719/v620719116/18a84/9pvxy6cGu_Q.jpg"/>
+                        <TextBlock Text="Твоё имя" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
+
+                    </StackPanel>
+                  
+                    <TextBlock Text="Лента" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
+                    <TextBlock Text="Мои" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
                     <TextBlock Text="Меню 3" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
                     <TextBlock Text="Меню 4" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
-                    <TextBlock Text="Меню 5" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
+                    <TextBlock Text="Настройки" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
                 </StackPanel>
                
 
 
             </Grid>
         </sidebarWp8:SidebarControl.SidebarContent>
-
-        <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch"
+        <phone:Pivot>
+         <phone:PivotItem Header="Новое">
+              <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch"
                   Margin="12">
-            <telerikPrimitives:RadDataBoundListBox DataRequested="RadDataBoundListBox_OnDataRequested" EmptyContent=" " CacheMode="BitmapCache" DataVirtualizationMode="OnDemandAutomatic" ItemsSource="{Binding Posts,Mode=TwoWay}" >
-
+            <telerikPrimitives:RadDataBoundListBox RefreshRequested="RadDataBoundListBox_OnRefreshRequested" IsPullToRefreshEnabled="True" DataRequested="RadDataBoundListBox_OnDataRequested" EmptyContent=" " CacheMode="BitmapCache" DataVirtualizationMode="OnDemandAutomatic" ItemsSource="{Binding Posts,Mode=TwoWay}" >
                 <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                   <DataTemplate>
                       <StackPanel>
-                            <TextBlock Text="{Binding Text}"/>
-                      </StackPanel>
+                            <RichTextBox Foreground="Black" Margin="10" Background="Green" x:Name="textContent" FontSize="16"  FontFamily="Segoe UI" 
+ common:Properties.Html="{Binding Text}" />
+                        </StackPanel>
                   </DataTemplate>
               </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
-                <telerikPrimitives:RadDataBoundListBox.DataVirtualizationItemTemplate>
-                    <DataTemplate>
-                        <Button Margin="-12, 0, -12, 0" Content="load more" HorizontalAlignment="Stretch" x:Name="btnLoadMore"/>
-                    </DataTemplate>
-                </telerikPrimitives:RadDataBoundListBox.DataVirtualizationItemTemplate>
                 <telerikPrimitives:RadDataBoundListBox.ItemLoadingTemplate>
                     <DataTemplate>
-                        <telerikPrimitives:RadBusyIndicator AnimationStyle="AnimationStyle9" IsRunning="True" Content=""/>
+                        <telerikPrimitives:RadBusyIndicator AnimationStyle="AnimationStyle7" IsRunning="True" Content=""/>
                     </DataTemplate>
                 </telerikPrimitives:RadDataBoundListBox.ItemLoadingTemplate>
             </telerikPrimitives:RadDataBoundListBox>
         </Grid>
+          </phone:PivotItem>
+
+            <phone:PivotItem Header="Лучшие">
+               
+        
+            </phone:PivotItem>
+        </phone:Pivot>
     </sidebarWp8:SidebarControl>
 </views:MvxPhonePage>
