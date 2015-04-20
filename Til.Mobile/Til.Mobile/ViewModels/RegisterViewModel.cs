@@ -68,7 +68,7 @@ namespace Hsking.Mobile.ViewModels
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
             }
             finally
             {
@@ -138,7 +138,7 @@ namespace Hsking.Mobile.ViewModels
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
             }
             finally
             {

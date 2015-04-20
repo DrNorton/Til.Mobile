@@ -18,6 +18,17 @@ namespace Til.Mobile.Api.Test
             var result = await facade.GetPosts(0,10);
             Assert.AreEqual(result.Posts.Count,10);
         }
+
+        [Test()]
+        public async void GetBestTest()
+        {
+            var apiSettings = new FakeApiSettings();
+            var facade = new ApiFacade(new ApiExecuter(apiSettings), apiSettings);
+            var result = await facade.GetBestPosts(5, DateTime.Now);
+            Assert.Greater(result.Count, 0);
+        }
+
+
         [Test()]
         public async void Auth()
         {

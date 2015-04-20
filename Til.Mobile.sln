@@ -19,6 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Til.Mobile.Api.Test", "Til.
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Til.Mobile\Til.Mobile\Til.Mobile.projitems*{7a7e58fc-52f8-473c-95c5-899f2daf1d40}*SharedItemsImports = 4
 		Til.Mobile\Til.Mobile\Til.Mobile.projitems*{91703daa-8967-45f6-a0d6-cbc1dfde3a7c}*SharedItemsImports = 13
 		Til.Mobile\Til.Mobile\Til.Mobile.projitems*{2a35bbfe-25ae-4775-ad3f-227f86990069}*SharedItemsImports = 4
 	EndGlobalSection

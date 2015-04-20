@@ -12,12 +12,15 @@
     xmlns:commands="clr-namespace:Cirrious.MvvmCross.WindowsPhone.Commands;assembly=Cirrious.MvvmCross.WindowsPhone"
     xmlns:telerikPrimitives="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Primitives"
     xmlns:common="clr-namespace:SocialMediaDashboard.W8.Common"
+    xmlns:primitives="clr-namespace:Microsoft.Phone.Controls.Primitives;assembly=Microsoft.Phone"
+    xmlns:converters="clr-namespace:Til.Mobile.WinPhone.Converters"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
+    
     mc:Ignorable="d"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="False" d:DataContext="{d:DesignData /SampleData/PostListViewModelSampleData.xaml}">
     <phone:PhoneApplicationPage.Resources>
         <Style TargetType="Border" x:Key="MenuHeaderBorderStyle">
             <Setter Property="Background" Value="Green" />
@@ -30,12 +33,65 @@
             <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilySemiBold}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
         </Style>
+        <DataTemplate x:Key="myHeader">
+            <TextBlock  FontSize="30"  Text="{Binding}"/>
+        </DataTemplate>
+        <converters:UrlToImageConverter x:Name="UrlToImageConverter"/>
+
+        <SolidColorBrush x:Key="PivotBackground" Color="#6596bd"/>
+
+        <Style x:Key="PivotStyle" TargetType="phone:Pivot">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="HeaderTemplate" Value="{StaticResource myHeader}"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <Grid/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="phone:Pivot">
+                        <Grid HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+      VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Background="#6596bd" CacheMode="BitmapCache" Grid.RowSpan="2" />
+                            <Grid Background="{TemplateBinding Background}" CacheMode="BitmapCache"
+        Grid.Row="2" />
+                            <ContentPresenter ContentTemplate="{TemplateBinding TitleTemplate}"
+                    Content="{TemplateBinding Title}" Margin="24,17,0,-7"/>
+                            <primitives:PivotHeadersControl Margin="0,-20,0,0" x:Name="HeadersListElement"
+                                          Grid.Row="1"/>
+                            <ItemsPresenter  x:Name="PivotItemPresenter"
+                  Margin="{TemplateBinding Padding}" Grid.Row="2"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+         </Style>
     </phone:PhoneApplicationPage.Resources>
-    
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar BackgroundColor="#ebebeb" ForegroundColor="#6596bd" Opacity="0.8"  IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton  
+            x:Name="AppBar"
+            IconUri="/Assets\AppBar\check.png"
+            Text="Добавить" />
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
     <sidebarWp8:SidebarControl x:Name="sidebarControl"
-                                HeaderText="MY APPNAME"
-                                HeaderBackground="Green"
+                                HeaderText="Посты"
+                                HeaderBackground="#6596bd"
+                               
                                 HeaderForeground="White"
                                 SidebarBackground="{StaticResource PhoneChromeBrush}">
         <sidebarWp8:SidebarControl.SidebarContent>
@@ -44,40 +100,49 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
-                <Border Style="{StaticResource MenuHeaderBorderStyle}">
-                    <TextBlock Style="{StaticResource MenuHeaderStyle}">MENU</TextBlock>
-                </Border>
-
+           
                 <StackPanel Grid.Row="1">
                     <StackPanel Margin="20,10,0,0" Orientation="Horizontal">
                         <Image Height="64" Width="64"  Source="https://pp.vk.me/c620719/v620719116/18a84/9pvxy6cGu_Q.jpg"/>
                         <TextBlock Text="Твоё имя" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
 
                     </StackPanel>
-                  
                     <TextBlock Text="Лента" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
                     <TextBlock Text="Мои" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
                     <TextBlock Text="Меню 3" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
                     <TextBlock Text="Меню 4" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
                     <TextBlock Text="Настройки" Foreground="White"  Style="{StaticResource MenuHeaderStyle}" />
                 </StackPanel>
-               
-
-
             </Grid>
         </sidebarWp8:SidebarControl.SidebarContent>
-        <phone:Pivot>
-         <phone:PivotItem Header="Новое">
-              <Grid VerticalAlignment="Top" HorizontalAlignment="Stretch"
-                  Margin="12">
+        <phone:Pivot Background="#ebebeb"  Style="{StaticResource PivotStyle}">
+           <phone:PivotItem Header="НОВОЕ">
+              <Grid  VerticalAlignment="Top" HorizontalAlignment="Stretch" >
             <telerikPrimitives:RadDataBoundListBox RefreshRequested="RadDataBoundListBox_OnRefreshRequested" IsPullToRefreshEnabled="True" DataRequested="RadDataBoundListBox_OnDataRequested" EmptyContent=" " CacheMode="BitmapCache" DataVirtualizationMode="OnDemandAutomatic" ItemsSource="{Binding Posts,Mode=TwoWay}" >
                 <telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                   <DataTemplate>
-                      <StackPanel>
-                            <RichTextBox Foreground="Black" Margin="10" Background="Green" x:Name="textContent" FontSize="16"  FontFamily="Segoe UI" 
- common:Properties.Html="{Binding Text}" />
-                        </StackPanel>
+                      <Border BorderBrush="White" BorderThickness="2">
+                          <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Border Background="#ebebeb"  Grid.RowSpan="2">
+                                            <Image  VerticalAlignment="Top" Margin="10" Height="74" Width="74"  HorizontalAlignment="Left" Source="{Binding PhotoUrl,Converter={StaticResource UrlToImageConverter},Mode=TwoWay}"/>
+                                        </Border>
+
+                                        <TextBlock Margin="10,0,0,0" FontStyle="Italic" FontSize="17" VerticalAlignment="Center" Grid.Column="1" Foreground="Black" Text="{Binding Author}"/>
+                                        <RichTextBox  Grid.Column="1"  Grid.Row="1" Padding="5" Foreground="Black" 
+                                         x:Name="textContent" 
+                                         FontSize="16"  FontFamily="Segoe UI"
+                                         common:Properties.Html="{Binding Text}" />
+                                    </Grid>
+                      </Border>
+                    
                   </DataTemplate>
               </telerikPrimitives:RadDataBoundListBox.ItemTemplate>
                 <telerikPrimitives:RadDataBoundListBox.ItemLoadingTemplate>
@@ -85,13 +150,17 @@
                         <telerikPrimitives:RadBusyIndicator AnimationStyle="AnimationStyle7" IsRunning="True" Content=""/>
                     </DataTemplate>
                 </telerikPrimitives:RadDataBoundListBox.ItemLoadingTemplate>
-            </telerikPrimitives:RadDataBoundListBox>
+                <telerikPrimitives:RadDataBoundListBox.ItemContainerStyle>
+                    <Style TargetType="telerikPrimitives:RadDataBoundListBoxItem">
+                      <Setter Property="Padding" Value="5"/>
+                    </Style>
+                </telerikPrimitives:RadDataBoundListBox.ItemContainerStyle>
+                    </telerikPrimitives:RadDataBoundListBox>
         </Grid>
           </phone:PivotItem>
-
-            <phone:PivotItem Header="Лучшие">
+           <phone:PivotItem Header="ЛУЧШЕЕ">
                
-        
+               
             </phone:PivotItem>
         </phone:Pivot>
     </sidebarWp8:SidebarControl>

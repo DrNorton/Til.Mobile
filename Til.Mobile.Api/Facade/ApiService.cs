@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Til.Mobile.Api.ExceptionRouter;
 using Til.Mobile.Api.Executer;
@@ -28,6 +29,14 @@ namespace Til.Mobile.Api.Facade
             getPostRequest.AddParam("skip", skip.ToString());
             getPostRequest.AddParam("take", take.ToString());
             return ExecuteWithErrorHandling<GetPostsResponse>(getPostRequest);
+        }
+
+        public Task<List<GroupedByDatePosts>> GetBestPosts(int skip, DateTime earlerThan)
+        {
+            var getPostRequest = new GetBestPostRequest();
+            getPostRequest.AddParam("take", skip.ToString());
+            getPostRequest.AddParam("earlerThan", earlerThan.ToString("dd.MM.yyyy"));
+            return ExecuteWithErrorHandling<List<GroupedByDatePosts>>(getPostRequest);
         }
 
         public async Task<Token> Auth(string phoneNumber,string password)

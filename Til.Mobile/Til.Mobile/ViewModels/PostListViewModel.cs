@@ -28,9 +28,7 @@ namespace Til.Mobile.ViewModels
                 return _refreshCommand;
             }
         }
-
        
-
         public ICommand RequestDataCommand
         {
             get
@@ -61,8 +59,6 @@ namespace Til.Mobile.ViewModels
             _apiFacade = apiFacade;
            _posts=new ObservableCollection<Post>();
         }
-
-
 
         public ObservableCollection<Post> Posts
         {

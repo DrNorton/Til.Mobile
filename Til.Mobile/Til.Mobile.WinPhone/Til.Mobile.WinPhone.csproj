@@ -29,6 +29,9 @@
     <NuGetPackageImportStamp>c5d961b9</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
     <DefaultLanguage>en-US</DefaultLanguage>
+    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -106,6 +109,7 @@
     <Compile Include="Controls\SlideViewPaginationTemplateSelector.cs" />
     <Compile Include="Controls\TransitionControlSlider.cs" />
     <Compile Include="Controls\TransitionControlTemplateSelector.cs" />
+    <Compile Include="Converters\UrlToImageConverter.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Helpers\BindingUtility.cs" />
     <Compile Include="Helpers\ConvertersWrapper\TheNativeBoolToVisibilityConverter.cs" />
@@ -167,6 +171,9 @@
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Assets\AppBar\check.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\BadgeLogo.png" />
     <Content Include="Assets\Images\header-bg.jpg" />
     <Content Include="Assets\Logo.png" />
@@ -316,7 +323,11 @@
       <Name>Til.Mobile.Api</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <DesignData Include="SampleData\PostListViewModelSampleData.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </DesignData>
+  </ItemGroup>
   <Import Project="..\Til.Mobile\Til.Mobile.projitems" Label="Shared" Condition="Exists('..\Til.Mobile\Til.Mobile.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />
@@ -334,5 +345,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.1.3.1.6296\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
 </Project>
