@@ -17,6 +17,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Til.Mobile.Api", "Til.Mobil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Til.Mobile.Api.Test", "Til.Mobile.Api.Test\Til.Mobile.Api.Test.csproj", "{7FCB553C-1196-4F28-ABC7-47B8330E007B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{520FFFE2-D6C7-4B6E-92EE-F3BE535EDE27}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Til.Mobile\Til.Mobile\Til.Mobile.projitems*{7a7e58fc-52f8-473c-95c5-899f2daf1d40}*SharedItemsImports = 4
