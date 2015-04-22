@@ -26,12 +26,12 @@ namespace Til.Mobile
             //    .EndingWith("Service")
             //    .AsInterfaces()
             //    .RegisterAsLazySingleton();
-
-            RegisterAppStart<ViewModels.MainViewModel>();
-            // _apiExecuter = new ApiExecuter("http://hskingapi.azurewebsites.net/api");
             Mvx.RegisterType<IApiSettings, ApiSettings>();
             Mvx.RegisterType<IApiExecuter, ApiExecuter>();
             Mvx.RegisterType<IApiFacade, ApiFacade>();
+            RegisterAppStart<ViewModels.MainViewModel>();
+            // _apiExecuter = new ApiExecuter("http://hskingapi.azurewebsites.net/api");
+         
             //Mvx.RegisterType<IRequestExecuterService, RequestExecuterService>();
             //Mvx.ConstructAndRegisterSingleton<IApiManager, ApiManager>();
         }

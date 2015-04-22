@@ -40,7 +40,7 @@ namespace Til.Mobile.ViewModels
         public MainViewModel(IApiSettings apiSettings)
         {
             _apiSettings = apiSettings;
-            Debug.WriteLine(_apiSettings.SavedToken);
+           
         }
 
         private void NavigateToStart()

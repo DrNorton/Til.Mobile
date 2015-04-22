@@ -28,26 +28,63 @@ namespace Til.Mobile.Droid
 		{
 		}
 		
+		public partial class Animation
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int drawer_slide_in_top = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int drawer_slide_out_top = 2130968577;
+			
+			static Animation()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Animation()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
-			// aapt resource value: 0x7f010000
-			public const int MvxBind = 2130771968;
+			// aapt resource value: 0x7f010006
+			public const int MvxBind = 2130771974;
 			
-			// aapt resource value: 0x7f010004
-			public const int MvxDropDownItemTemplate = 2130771972;
+			// aapt resource value: 0x7f01000a
+			public const int MvxDropDownItemTemplate = 2130771978;
+			
+			// aapt resource value: 0x7f010009
+			public const int MvxItemTemplate = 2130771977;
+			
+			// aapt resource value: 0x7f010007
+			public const int MvxLang = 2130771975;
+			
+			// aapt resource value: 0x7f01000b
+			public const int MvxSource = 2130771979;
+			
+			// aapt resource value: 0x7f010008
+			public const int MvxTemplate = 2130771976;
 			
 			// aapt resource value: 0x7f010003
-			public const int MvxItemTemplate = 2130771971;
-			
-			// aapt resource value: 0x7f010001
-			public const int MvxLang = 2130771969;
-			
-			// aapt resource value: 0x7f010005
-			public const int MvxSource = 2130771973;
+			public const int fillViewport = 2130771971;
 			
 			// aapt resource value: 0x7f010002
-			public const int MvxTemplate = 2130771970;
+			public const int pointerFill = 2130771970;
+			
+			// aapt resource value: 0x7f010001
+			public const int pointerMargin = 2130771969;
+			
+			// aapt resource value: 0x7f010000
+			public const int pointerSize = 2130771968;
+			
+			// aapt resource value: 0x7f010005
+			public const int radScrollViewStyle = 2130771973;
+			
+			// aapt resource value: 0x7f010004
+			public const int scrollMode = 2130771972;
 			
 			static Attribute()
 			{
@@ -59,14 +96,88 @@ namespace Til.Mobile.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f070006
+			public const int groupHeaderTextColor = 2131165190;
+			
+			// aapt resource value: 0x7f070005
+			public const int listAccentColor = 2131165189;
+			
+			// aapt resource value: 0x7f070004
+			public const int listItemTextColor = 2131165188;
+			
+			// aapt resource value: 0x7f070003
+			public const int pressedColor = 2131165187;
+			
+			// aapt resource value: 0x7f070002
+			public const int selectionColor = 2131165186;
+			
+			// aapt resource value: 0x7f070007
+			public const int shadeColor = 2131165191;
+			
+			// aapt resource value: 0x7f070008
+			public const int shadeColorCenter = 2131165192;
+			
+			// aapt resource value: 0x7f070000
+			public const int transparent = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int white = 2131165185;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f050000
+			public const int legend_stroke_width = 2131034112;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int gingerbread_background = 2130837504;
 			
 			// aapt resource value: 0x7f020001
-			public const int splash = 2130837505;
+			public const int Icon = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int pressable_item_background = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int selectable_item_background = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int shade_bottom = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int shade_corner = 2130837509;
+			
+			// aapt resource value: 0x7f020006
+			public const int shade_right = 2130837510;
+			
+			// aapt resource value: 0x7f020007
+			public const int splash = 2130837511;
 			
 			static Drawable()
 			{
@@ -81,8 +192,41 @@ namespace Til.Mobile.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040000
-			public const int MvxBindingTagUnique = 2130968576;
+			// aapt resource value: 0x7f090000
+			public const int MvxBindingTagUnique = 2131296256;
+			
+			// aapt resource value: 0x7f090007
+			public const int TheListView = 2131296263;
+			
+			// aapt resource value: 0x7f090006
+			public const int buttonPanel = 2131296262;
+			
+			// aapt resource value: 0x7f09000b
+			public const int chart_data_point_content_container = 2131296267;
+			
+			// aapt resource value: 0x7f090004
+			public const int chart_tooltip_category = 2131296260;
+			
+			// aapt resource value: 0x7f09000a
+			public const int chart_tooltip_pointer = 2131296266;
+			
+			// aapt resource value: 0x7f090005
+			public const int chart_tooltip_value = 2131296261;
+			
+			// aapt resource value: 0x7f090008
+			public const int groupHeaderText = 2131296264;
+			
+			// aapt resource value: 0x7f090001
+			public const int horizontal = 2131296257;
+			
+			// aapt resource value: 0x7f090009
+			public const int text1 = 2131296265;
+			
+			// aapt resource value: 0x7f090003
+			public const int tooltip_content_container = 2131296259;
+			
+			// aapt resource value: 0x7f090002
+			public const int vertical = 2131296258;
 			
 			static Id()
 			{
@@ -98,10 +242,34 @@ namespace Til.Mobile.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int FirstView = 2130903040;
+			public const int default_tooltip_content = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int SplashScreen = 2130903041;
+			public const int Item_Post = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int on_demand_automatic = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int on_demand_manual = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Page_MainView = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int Page_PostListView = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int simple_group_header_item = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int simple_list_item = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int SplashScreen = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int tooltip_container = 2130903049;
 			
 			static Layout()
 			{
@@ -113,11 +281,36 @@ namespace Til.Mobile.Droid
 			}
 		}
 		
+		public partial class String
+		{
+			
+			// aapt resource value: 0x7f080001
+			public const int on_demand_manual_button_busy = 2131230721;
+			
+			// aapt resource value: 0x7f080000
+			public const int on_demand_manual_button_idle = 2131230720;
+			
+			static String()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private String()
+			{
+			}
+		}
+		
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int Theme_Splash = 2131034112;
+			// aapt resource value: 0x7f060000
+			public const int RadScrollViewStyle = 2131099648;
+			
+			// aapt resource value: 0x7f060001
+			public const int RadScrollViewTheme = 2131099649;
+			
+			// aapt resource value: 0x7f060002
+			public const int Theme_Splash = 2131099650;
 			
 			static Style()
 			{
@@ -133,8 +326,8 @@ namespace Til.Mobile.Droid
 		{
 			
 			public static int[] MvxBinding = new int[] {
-					2130771968,
-					2130771969};
+					2130771974,
+					2130771975};
 			
 			// aapt resource value: 0
 			public const int MvxBinding_MvxBind = 0;
@@ -143,26 +336,56 @@ namespace Til.Mobile.Droid
 			public const int MvxBinding_MvxLang = 1;
 			
 			public static int[] MvxControl = new int[] {
-					2130771970};
+					2130771976};
 			
 			// aapt resource value: 0
 			public const int MvxControl_MvxTemplate = 0;
 			
 			public static int[] MvxImageView = new int[] {
-					2130771973};
+					2130771979};
 			
 			// aapt resource value: 0
 			public const int MvxImageView_MvxSource = 0;
 			
 			public static int[] MvxListView = new int[] {
-					2130771971,
-					2130771972};
+					2130771977,
+					2130771978};
 			
 			// aapt resource value: 1
 			public const int MvxListView_MvxDropDownItemTemplate = 1;
 			
 			// aapt resource value: 0
 			public const int MvxListView_MvxItemTemplate = 0;
+			
+			public static int[] PointerLayout = new int[] {
+					2130771968,
+					2130771969,
+					2130771970};
+			
+			// aapt resource value: 2
+			public const int PointerLayout_pointerFill = 2;
+			
+			// aapt resource value: 1
+			public const int PointerLayout_pointerMargin = 1;
+			
+			// aapt resource value: 0
+			public const int PointerLayout_pointerSize = 0;
+			
+			public static int[] RadScrollView = new int[] {
+					2130771971,
+					2130771972};
+			
+			// aapt resource value: 0
+			public const int RadScrollView_fillViewport = 0;
+			
+			// aapt resource value: 1
+			public const int RadScrollView_scrollMode = 1;
+			
+			public static int[] RadScrollViewTheme = new int[] {
+					2130771973};
+			
+			// aapt resource value: 0
+			public const int RadScrollViewTheme_radScrollViewStyle = 0;
 			
 			static Styleable()
 			{

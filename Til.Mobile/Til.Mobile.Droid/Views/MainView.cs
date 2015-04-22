@@ -5,12 +5,12 @@ using Cirrious.MvvmCross.Droid.Views;
 namespace Til.Mobile.Droid.Views
 {
     [Activity(Label = "View for FirstViewModel")]
-    public class FirstView : MvxActivity
+    public class MainView : MvxActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            SetContentView(Resource.Layout.FirstView);
+            SetContentView(Resource.Layout.Page_MainView);
         }
     }
 }
